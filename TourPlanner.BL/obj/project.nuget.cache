@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "Fm+M01SRvIkDL9jDDH7EJtgDXLkuaLnEnWlqWvUHUJBOZdyNpxJYSeFCLTV6QMFhLco2Dw91pF/FDPHDKlr9wA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\abdul\\source\\repos\\TourPlanner\\TourPlanner.BL\\TourPlanner.BL.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\abdul\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.26\\microsoft.windowsdesktop.app.ref.6.0.26.nupkg.sha512",
+    "C:\\Users\\abdul\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.26\\microsoft.netcore.app.ref.6.0.26.nupkg.sha512",
+    "C:\\Users\\abdul\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.26\\microsoft.aspnetcore.app.ref.6.0.26.nupkg.sha512"
+  ],
+  "logs": []
+}
