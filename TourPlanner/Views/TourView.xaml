@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="TourPlanner.Views.TourView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TourPlanner.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+ 
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border BorderBrush="Black" BorderThickness="1" Padding="10" Grid.Column="0">
+            <StackPanel>
+                <!-- Header-Abschnitt mit Titel und Buttons -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="Tours" FontSize="16" VerticalAlignment="Center" Grid.Column="0"/>
+                    <StackPanel Orientation="Horizontal" Grid.Column="1">
+                        <Button Content="+" Width="30" Height="30" Margin="5,0,5,0" Command="{Binding AddTourCommand}"/>
+                        <Button Content="-" Width="30" Height="30" Margin="0,0,5,0"/>
+                        <Button Content="..." Width="30" Height="30"/>
+                    </StackPanel>
+                </Grid>
+
+                <!-- Linie zur visuellen Trennung -->
+                <Border Background="Gray" Height="2" Margin="0,5"/>
+
+                <!-- ListView für die Anzeige der Touren -->
+                <ListView Name="lvTours" Margin="0,10,0,0" Background="White">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}" Padding="5"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

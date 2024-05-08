@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\abdul\source\repos\TourPlanner\TourPlanner\App.xaml
-11407045341
+2-1647503112
 
-81825603358
+9-1526642780
 1942009779132
-MainWindow.xaml;
+MainWindow.xaml;Views\TourView.xaml;
 
-False
+True
 
