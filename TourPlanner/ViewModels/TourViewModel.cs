@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
 using TourPlanner.Models;
 
@@ -10,14 +6,47 @@ namespace TourPlanner.ViewModels
 {
     public class TourViewModel : BaseVIewModel
     {
-        public AddTourViewModel AddTourViewModel { get; }
+
+        private ObservableCollection<Tour> _tours = new ObservableCollection<Tour>();
+        public ObservableCollection<Tour> Tours
+        {
+            get { return _tours; }
+            set
+            {
+                _tours = value;
+                OnPropertyChanged(nameof(Tours));
+            }
+        }
+
+        //public AddTourViewModel AddTourViewModel { get; }
         public ICommand AddTourCommand { get; }
+        public ICommand RemoveTourCommand { get; }
+        public ICommand EditTourCommand { get; }
+
 
         public TourViewModel()
         {
-            AddTourViewModel = new AddTourViewModel();
+            AddTourCommand = new RelayCommand((_) => AddTour());
+
         }
 
+
+        private void AddTour()
+        {
+            Tours.Add(new Tour("Tour1", "Description1", "From1", "To1", "TransportType1"));
+            Tours.Add(new Tour("Tour2", "Description2", "From2", "To2", "TransportType2"));
+
+        }
+
+        private void RemoveTour()
+        {
+
+        }
+
+        private void EditTour()
+        {
+
+        }
 
 
 
