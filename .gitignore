@@ -540,3 +540,10 @@ $RECYCLE.BIN/
 /TourPlanner.DAL/TourPlanner.DAL.csproj
 /TourPlanner.BL/obj/Debug/net6.0/TourPlanner.BL.AssemblyInfo.cs
 /TourPlanner/obj/Debug/net6.0-windows/TourPlanner.designer.deps.json
+/TourPlanner/obj/Debug/net6.0-windows/TourPlanner.csproj.FileListAbsolute.txt
+/TourPlanner/obj/Debug/net6.0-windows/TourPlanner.designer.deps.json
+/TourPlanner/obj/Debug/net6.0-windows/TourPlanner.designer.runtimeconfig.json
+/TourPlanner/obj/Debug/net6.0-windows/TourPlanner_MarkupCompile.lref
+/TourPlanner/obj/TourPlanner.csproj.nuget.g.targets
+/TourPlanner/obj/Debug/net6.0-windows/MainWindow.baml
+/TourPlanner/obj/Debug/net6.0-windows/Views/AddTourView.baml
