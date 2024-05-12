@@ -35,6 +35,26 @@ namespace TourPlanner.ViewModels
         {
             Tours.Add(new Tour("Tour1", "Description1", "From1", "To1", "TransportType1"));
             Tours.Add(new Tour("Tour2", "Description2", "From2", "To2", "TransportType2"));
+            Tours.Add(new Tour("Tour3", "Description1", "From1", "To1", "TransportType1"));
+            Tours.Add(new Tour("Tour4", "Description2", "From2", "To2", "TransportType2"));
+            Tours.Add(new Tour("Tour5", "Description1", "From1", "To1", "TransportType1"));
+            Tours.Add(new Tour("Tour6", "Description2", "From2", "To2", "TransportType2"));
+            Tours.Add(new Tour("Tour7", "Description1", "From1", "To1", "TransportType1"));
+            Tours.Add(new Tour("Tour8", "Description2", "From2", "To2", "TransportType2"));
+            Tours.Add(new Tour("Tour9", "Description1", "From1", "To1", "TransportType1"));
+            Tours.Add(new Tour("Tour10", "Description2", "From2", "To2", "TransportType2"));
+            Tours.Add(new Tour("Tour11", "Description1", "From1", "To1", "TransportType1"));
+            Tours.Add(new Tour("Tour12", "Description2", "From2", "To2", "TransportType2"));
+            Tours.Add(new Tour("Tour13", "Description1", "From1", "To1", "TransportType1"));
+            Tours.Add(new Tour("Tour14", "Description2", "From2", "To2", "TransportType2"));
+            Tours.Add(new Tour("Tour15", "Description1", "From1", "To1", "TransportType1"));
+            Tours.Add(new Tour("Tour16", "Description1", "From1", "To1", "TransportType1"));
+            Tours.Add(new Tour("Tour17", "Description1", "From1", "To1", "TransportType1"));
+            Tours.Add(new Tour("Tour18", "Description1", "From1", "To1", "TransportType1"));
+            Tours.Add(new Tour("Tour19", "Description2", "From2", "To2", "TransportType2"));
+            Tours.Add(new Tour("Tour20", "Description2", "From2", "To2", "TransportType2"));
+            Tours.Add(new Tour("Tour21", "Description2", "From2", "To2", "TransportType2"));
+            Tours.Add(new Tour("Tour22", "Description2", "From2", "To2", "TransportType2"));
 
         }
 

@@ -14,7 +14,12 @@
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
 
-        <Border BorderBrush="Black" BorderThickness="1" Padding="10" Grid.Column="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border BorderBrush="Black" BorderThickness="1" Padding="10" Grid.Column="0" Grid.RowSpan="2">
             <StackPanel>
                 <!-- Header-Abschnitt mit Titel und Buttons -->
                 <Grid>
@@ -35,14 +40,57 @@
                 <Border Background="Gray" Height="2" Margin="0,5"/>
 
                 <!-- ListView für die Anzeige der Touren -->
-                <ListView ItemsSource="{Binding Tours}" Name="lvTours" Margin="0,10,0,0" Background="White">
+                <ListView ItemsSource="{Binding Tours}" x:Name="toursListView" Margin="0,10,0,0" Background="White" ScrollViewer.VerticalScrollBarVisibility="Auto">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Name}" Padding="5"/>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Name}" Padding="5"/>
+                                <TextBlock Text="{Binding Description}" Padding="5"/>
+                            </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </StackPanel>
         </Border>
+
+        <TabControl Grid.Column="1" Margin="10">
+            <TabItem Header="General">
+                <Grid Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <!-- Für Labels -->
+                        <ColumnDefinition Width="*"/>
+                        <!-- Für Daten -->
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Labels -->
+                    <TextBlock Text="Name:" FontWeight="Bold" Padding="5" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"/>
+                    <TextBlock Text="Description:" FontWeight="Bold" Padding="5" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0"/>
+                    <TextBlock Text="From:" FontWeight="Bold" Padding="5" VerticalAlignment="Center" Grid.Row="2" Grid.Column="0"/>
+                    <TextBlock Text="To:" FontWeight="Bold" Padding="5" VerticalAlignment="Center" Grid.Row="3" Grid.Column="0"/>
+                    <TextBlock Text="Transport Type:" FontWeight="Bold" Padding="5" VerticalAlignment="Center" Grid.Row="4" Grid.Column="0"/>
+
+                    <!-- Werte -->
+                    <TextBlock Text="{Binding ElementName=toursListView, Path=SelectedItem.Content, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Padding="5" Grid.Row="0" Grid.Column="1"/>
+                    <TextBlock Text="{Binding SelectedTour.Description}" Padding="5" Grid.Row="1" Grid.Column="1"/>
+                    <TextBlock Text="{Binding SelectedTour.From}" Padding="5" Grid.Row="2" Grid.Column="1"/>
+                    <TextBlock Text="{Binding SelectedTour.To}" Padding="5" Grid.Row="3" Grid.Column="1"/>
+                    <TextBlock Text="{Binding SelectedTour.TransportType}" Padding="5" Grid.Row="4" Grid.Column="1"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Route">
+                <TextBlock Text="Details about the route." Padding="10"/>
+            </TabItem>
+            <TabItem Header="Misc">
+                <TextBlock Text="Miscellaneous information." Padding="10"/>
+            </TabItem>
+        </TabControl>
     </Grid>
 </UserControl>
