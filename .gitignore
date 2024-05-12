@@ -539,3 +539,4 @@ $RECYCLE.BIN/
 /TourPlanner.BL/obj/TourPlanner.BL.csproj.nuget.g.props
 /TourPlanner.DAL/TourPlanner.DAL.csproj
 /TourPlanner.BL/obj/Debug/net6.0/TourPlanner.BL.AssemblyInfo.cs
+/TourPlanner/obj/Debug/net6.0-windows/TourPlanner.designer.deps.json
