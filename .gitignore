@@ -547,3 +547,4 @@ $RECYCLE.BIN/
 /TourPlanner/obj/TourPlanner.csproj.nuget.g.targets
 /TourPlanner/obj/Debug/net6.0-windows/MainWindow.baml
 /TourPlanner/obj/Debug/net6.0-windows/Views/AddTourView.baml
+/TourPlanner.BL/obj/TourPlanner.BL.csproj.nuget.g.targets
