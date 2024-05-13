@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using TourPlanner.DAL.DTOs;
+using TourPlanner.DTOs;
 
 namespace TourPlanner.DAL
 {

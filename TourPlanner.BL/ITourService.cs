@@ -1,9 +1,15 @@
-﻿using TourPlanner.DAL.DTOs;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using TourPlanner.DAL.DTOs;
 using TourPlanner.DTOs;
 
-namespace TourPlanner.DAL
+
+namespace TourPlanner.BL
 {
-    public interface ITourRepository
+    public interface ITourService
     {
         Task<List<Tour>> GetAllToursAsync();
         Task AddTourAsync(Tour tour);
@@ -11,4 +17,5 @@ namespace TourPlanner.DAL
         Task UpdateTourAsync(Tour tour);
         Task<Tour> GetTourByIdAsync(int id);
     }
+
 }

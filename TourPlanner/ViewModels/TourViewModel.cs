@@ -1,13 +1,22 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
-using TourPlanner.Models;
+using TourPlanner.BL;
+using TourPlanner.DTOs;
 
 namespace TourPlanner.ViewModels
 {
     public class TourViewModel : BaseVIewModel
     {
+        public event Action ShowAddTourView;
+        public ICommand AddTourCommand { get; }
+        public ICommand CloseAddTourViewCommand { get; }
+        public ICommand RemoveTourCommand { get; }
+        public ICommand EditTourCommand { get; }
 
-        private ObservableCollection<Tour> _tours = new ObservableCollection<Tour>();
+        private readonly ITourService _tourService;
+
+        private ObservableCollection<Tour> _tours;
+
         public ObservableCollection<Tour> Tours
         {
             get { return _tours; }
@@ -18,44 +27,44 @@ namespace TourPlanner.ViewModels
             }
         }
 
-        //public AddTourViewModel AddTourViewModel { get; }
-        public ICommand AddTourCommand { get; }
-        public ICommand RemoveTourCommand { get; }
-        public ICommand EditTourCommand { get; }
+        private Tour _selectedTour;
 
-
-        public TourViewModel()
+        public Tour SelectedTour
         {
-            AddTourCommand = new RelayCommand((_) => AddTour());
+            get { return _selectedTour; }
+            set
+            {
+                _selectedTour = value;
+                OnPropertyChanged(nameof(SelectedTour));
+            }
+        }   
+
+
+
+        public TourViewModel(ITourService tourService)
+        {
+            Tours = new ObservableCollection<Tour>();
+            
+            this._tourService = tourService;
+
+            AddTourCommand = new RelayCommand((_) => OpenAddTourView());
+            
+            CloseAddTourViewCommand = new RelayCommand((_) => CloseAddTourView());
+
+            
+            LoadTours();
 
         }
 
 
-        private void AddTour()
+        private void OpenAddTourView()
         {
-            Tours.Add(new Tour("Tour1", "Description1", "From1", "To1", "TransportType1"));
-            Tours.Add(new Tour("Tour2", "Description2", "From2", "To2", "TransportType2"));
-            Tours.Add(new Tour("Tour3", "Description1", "From1", "To1", "TransportType1"));
-            Tours.Add(new Tour("Tour4", "Description2", "From2", "To2", "TransportType2"));
-            Tours.Add(new Tour("Tour5", "Description1", "From1", "To1", "TransportType1"));
-            Tours.Add(new Tour("Tour6", "Description2", "From2", "To2", "TransportType2"));
-            Tours.Add(new Tour("Tour7", "Description1", "From1", "To1", "TransportType1"));
-            Tours.Add(new Tour("Tour8", "Description2", "From2", "To2", "TransportType2"));
-            Tours.Add(new Tour("Tour9", "Description1", "From1", "To1", "TransportType1"));
-            Tours.Add(new Tour("Tour10", "Description2", "From2", "To2", "TransportType2"));
-            Tours.Add(new Tour("Tour11", "Description1", "From1", "To1", "TransportType1"));
-            Tours.Add(new Tour("Tour12", "Description2", "From2", "To2", "TransportType2"));
-            Tours.Add(new Tour("Tour13", "Description1", "From1", "To1", "TransportType1"));
-            Tours.Add(new Tour("Tour14", "Description2", "From2", "To2", "TransportType2"));
-            Tours.Add(new Tour("Tour15", "Description1", "From1", "To1", "TransportType1"));
-            Tours.Add(new Tour("Tour16", "Description1", "From1", "To1", "TransportType1"));
-            Tours.Add(new Tour("Tour17", "Description1", "From1", "To1", "TransportType1"));
-            Tours.Add(new Tour("Tour18", "Description1", "From1", "To1", "TransportType1"));
-            Tours.Add(new Tour("Tour19", "Description2", "From2", "To2", "TransportType2"));
-            Tours.Add(new Tour("Tour20", "Description2", "From2", "To2", "TransportType2"));
-            Tours.Add(new Tour("Tour21", "Description2", "From2", "To2", "TransportType2"));
-            Tours.Add(new Tour("Tour22", "Description2", "From2", "To2", "TransportType2"));
+            IsAddTourViewVisible = true;
+        }
 
+        private void CloseAddTourView()
+        {
+            IsAddTourViewVisible = false;
         }
 
         private void RemoveTour()
@@ -68,69 +77,36 @@ namespace TourPlanner.ViewModels
 
         }
 
-
-
-
-        /*
-
-        private Tour tour;
-
-        public TourViewModel()
+        public async void LoadTours()
         {
-            tour = new Tour(Name, Description, From, To, TransportType);
+            var allTours = await _tourService.GetAllToursAsync();
+            
+            Tours.Clear();
 
-        }
-
-        public string Name
-        {
-            get { return tour.Name; }
-            set
+            foreach (var tour in allTours)
             {
-                tour.Name = value;
-                OnPropertyChanged();
+                Tours.Add(tour);
             }
         }
 
-        public string Description
+
+
+        private bool _isAddTourViewVisible;
+        public bool IsAddTourViewVisible
         {
-            get { return tour.Description; }
+            get { return _isAddTourViewVisible; }
             set
             {
-                tour.Description = value;
-                OnPropertyChanged();
+                _isAddTourViewVisible = value;
+                OnPropertyChanged(nameof(IsAddTourViewVisible));
+                OnPropertyChanged(nameof(IsTabControlVisible));
             }
         }
 
-        public string From
+        public bool IsTabControlVisible
         {
-            get { return tour.From; }
-            set
-            {
-                tour.From = value;
-                OnPropertyChanged();
-            }
+            get { return !_isAddTourViewVisible; }
         }
 
-        public string To
-        {
-            get { return tour.To; }
-            set
-            {
-                tour.To = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public string TransportType
-        {
-            get { return tour.TransportType; }
-            set
-            {
-                tour.TransportType = value;
-                OnPropertyChanged();
-            }
-        }
-
-        */
     }
 }

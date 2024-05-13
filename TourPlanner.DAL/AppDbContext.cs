@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TourPlanner.DAL.DTOs;
+using TourPlanner.DTOs;
+using System.Configuration;
 
 namespace TourPlanner.DAL
 {
@@ -13,17 +16,10 @@ namespace TourPlanner.DAL
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Host=localhost;Database=postgres;Username=postgres;Password=1234");
+            string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+
+            optionsBuilder.UseNpgsql(connectionString);
         }
     }
 
-    public class Tour
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public string From { get; set; }
-        public string To { get; set; }
-        public string TransportType { get; set; }
-    }
 }

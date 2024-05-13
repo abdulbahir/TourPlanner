@@ -16,15 +16,21 @@ using TourPlanner.ViewModels;
 
 namespace TourPlanner.Views
 {
-    /// <summary>
-    /// Interaktionslogik für TourView.xaml
-    /// </summary>
     public partial class TourView : UserControl
     {
-        public TourView()
+        private TourViewModel _tourViewModel;
+
+        public TourView(TourViewModel tourViewModel)
         {
             InitializeComponent();
-            this.DataContext = new TourViewModel();
+            _tourViewModel = tourViewModel;
+            DataContext = _tourViewModel;
+            Loaded += TourView_Loaded;
+        }
+
+        private void TourView_Loaded(object sender, RoutedEventArgs e)
+        {
+            _tourViewModel.LoadTours();
         }
     }
 }

@@ -6,7 +6,9 @@
              xmlns:local="clr-namespace:TourPlanner.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-   
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+    </UserControl.Resources>
  
     <Grid Background="White">
         <Grid.ColumnDefinitions>
@@ -40,7 +42,12 @@
                 <Border Background="Gray" Height="2" Margin="0,5"/>
 
                 <!-- ListView für die Anzeige der Touren -->
-                <ListView ItemsSource="{Binding Tours}" x:Name="toursListView" Margin="0,10,0,0" Background="White" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                <ListView ItemsSource="{Binding Tours}" 
+                          SelectedItem="{Binding SelectedTour}"
+                          x:Name="toursListView" 
+                          Margin="0,10,0,0" 
+                          Background="White" 
+                          ScrollViewer.VerticalScrollBarVisibility="Auto">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel>
@@ -53,7 +60,7 @@
             </StackPanel>
         </Border>
 
-        <TabControl Grid.Column="1" Margin="10">
+        <TabControl Grid.Column="1" Margin="10" Visibility="{Binding IsTabControlVisible, Converter={StaticResource BoolToVis}}">
             <TabItem Header="General">
                 <Grid Margin="10">
                     <Grid.ColumnDefinitions>
@@ -79,7 +86,7 @@
 
                     <!-- Werte -->
                     <TextBlock Text="{Binding ElementName=toursListView, Path=SelectedItem.Content, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Padding="5" Grid.Row="0" Grid.Column="1"/>
-                    <TextBlock Text="{Binding SelectedTour.Description}" Padding="5" Grid.Row="1" Grid.Column="1"/>
+                    <TextBlock Text="{Binding SelectedTour.Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Padding="5" Grid.Row="1" Grid.Column="1"/>
                     <TextBlock Text="{Binding SelectedTour.From}" Padding="5" Grid.Row="2" Grid.Column="1"/>
                     <TextBlock Text="{Binding SelectedTour.To}" Padding="5" Grid.Row="3" Grid.Column="1"/>
                     <TextBlock Text="{Binding SelectedTour.TransportType}" Padding="5" Grid.Row="4" Grid.Column="1"/>
@@ -92,5 +99,6 @@
                 <TextBlock Text="Miscellaneous information." Padding="10"/>
             </TabItem>
         </TabControl>
+        <!---local:AddTourView Grid.Column="1" Visibility="{Binding IsAddTourVisible, Converter={StaticResource BoolToVis}}"/>-->
     </Grid>
 </UserControl>

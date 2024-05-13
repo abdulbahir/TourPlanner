@@ -8,6 +8,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TourPlanner.BL;
+using TourPlanner.ViewModels;
+using TourPlanner.Views;
 
 namespace TourPlanner
 {

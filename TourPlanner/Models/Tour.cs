@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace TourPlanner.Models
 {
+    
     public class Tour
     {
         /*
         public string Name { get; set; }
-        */
+        
 
         private string _name;
 
@@ -84,6 +85,7 @@ namespace TourPlanner.Models
             this.To = to;
             this.TransportType = transportType;
 
-        }
-    }
+        } */
+    } 
 }
+
